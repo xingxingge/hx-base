@@ -1,0 +1,41 @@
+<operator id="10001" name="process" class="com.topsec.ti.patronus.engine.spark.driver.SparkPipeline">
+  <parametergroup name="spark.config">        <!--Spark程序运行配置-->
+    <parameter name="spark.master">yarn</parameter>
+    <parameter name="sparkHome">/opt/cloudera/parcels/CDH/lib/spark</parameter>
+    <parameter name="engineJarPath">/home/patronus/classpath/patronus-engine-spark-1.0-SNAPSHOT.jar</parameter>
+    <parameter name="spark.dirver.memory">512m</parameter>
+    <parameter name="spark.executor.memory">512m</parameter>
+    <parametertable name="extra.config">
+      <head>
+        <parameter name="name" valias="字段名"/>
+        <parameter name="value" valias="值"/>
+      </head>
+      <parameterrow name="spark.sql.inMemoryColumnarStorage.compressed" value="true"></parameterrow>
+      <parameterrow name="spark.sql.autoBroadcastJoinThreshold" value="10485760"></parameterrow>
+    </parametertable>
+  </parametergroup>
+  <parametergroup name="spark.engine.config">
+    <parameter name="spark.sql.shuffle.partitions">200</parameter>        <!--Spark Engine配置-->
+    <parameter name="spark.engine.env.type">batch</parameter>
+    <parameter name="spark.engine.cache.enable">true</parameter>
+    <parameter name="spark.engine.parallelism">4</parameter>
+  </parametergroup>
+  <operator id="10002" name="CSVReader" class="com.topsec.ti.patronus.reentrantLockTest.stuboperator.reader.CSVReader">
+    <parameter name="path">/tmp/1</parameter>
+    <outport id="outport1" name="过程输出端口1"/>
+  </operator>
+  <operator id="10003" name="FixString" class="com.topsec.ti.operator.masking.base.impl.FixString">
+    <parameter name="fixString">fixString</parameter>
+    <parameter name="column">0</parameter>
+    <parameter name="start">0</parameter>
+    <parameter name="length">1</parameter>
+    <inport id="inport1" name="过程输入端口1"/>
+    <outport id="outport1" name="过程输出端口1"/>
+  </operator>
+  <operator id="10004" name="CSVWriter" class="com.topsec.ti.patronus.reentrantLockTest.stuboperator.writer.CSVWriter">
+    <parameter name="path">/tmp/2</parameter>
+    <inport id="inport1" name="xxx"/>
+  </operator>
+  <connect from="10002.outport1" to="10003.inport1"/>
+  <connect from="10003.outport1" to="10004.inport1"/>
+</operator>
