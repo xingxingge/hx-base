@@ -88,7 +88,7 @@ public class DefaultResourceLoader implements ResourceLoader {
       try {
         // Try to parse the location as a URL...
         URL url = new URL(location);
-        return new UrlResource(url);
+        return new URLResource(url);
       } catch (MalformedURLException ex) {
         // No URL -> resolve as resource path.
         return getResourceByPath(location);

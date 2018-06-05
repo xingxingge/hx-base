@@ -27,7 +27,7 @@ import java.net.URI;
 import java.net.URL;
 import java.net.URLConnection;
 
-public class UrlResource extends AbstractResource {
+public class URLResource extends AbstractResource {
 
   /**
    * Original URL, used for actual access.
@@ -50,7 +50,7 @@ public class UrlResource extends AbstractResource {
    * @param url
    *          a URL
    */
-  public UrlResource(URL url) {
+  public URLResource(URL url) {
     this.url = url;
     this.cleanedUrl = getCleanedUrl(this.url, url.toString());
     this.uri = null;
@@ -64,7 +64,7 @@ public class UrlResource extends AbstractResource {
    * @throws MalformedURLException
    *           if the given URL path is not valid
    */
-  public UrlResource(URI uri) throws MalformedURLException {
+  public URLResource(URI uri) throws MalformedURLException {
     this.url = uri.toURL();
     this.cleanedUrl = getCleanedUrl(this.url, uri.toString());
     this.uri = uri;
@@ -78,7 +78,7 @@ public class UrlResource extends AbstractResource {
    * @throws MalformedURLException
    *           if the given URL path is not valid
    */
-  public UrlResource(String path) throws MalformedURLException {
+  public URLResource(String path) throws MalformedURLException {
     this.url = new URL(path);
     this.cleanedUrl = getCleanedUrl(this.url, path);
     this.uri = null;
@@ -181,7 +181,7 @@ public class UrlResource extends AbstractResource {
     if (relativePath.startsWith("/")) {
       relativePath = relativePath.substring(1);
     }
-    return new UrlResource(new URL(this.url, relativePath));
+    return new URLResource(new URL(this.url, relativePath));
   }
 
   /**
@@ -205,8 +205,8 @@ public class UrlResource extends AbstractResource {
    * This implementation compares the underlying URL references.
    */
   public boolean equals(Object obj) {
-    return (obj == this || (obj instanceof UrlResource && this.cleanedUrl
-        .equals(((UrlResource) obj).cleanedUrl)));
+    return (obj == this || (obj instanceof URLResource && this.cleanedUrl
+        .equals(((URLResource) obj).cleanedUrl)));
   }
 
   /**
