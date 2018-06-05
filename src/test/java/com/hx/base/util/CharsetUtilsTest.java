@@ -10,8 +10,10 @@ import java.io.UnsupportedEncodingException;
  * Created by hx on 16-9-19.
  */
 public class CharsetUtilsTest {
+
   @Test
   public void isValidUtf8() throws Exception {
+    System.out.println("test");
 
   }
 
