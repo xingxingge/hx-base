@@ -1,13 +1,13 @@
 language: java
-jdk:
-  - oraclejdk7
+#jdk:
+#  - oraclejdk7
 #branches:
 #  only:
 #    - master
-install:
-- ls
-sripts:
- - mvn clean install -Pfull -DskipTests
+#install:
+#- ls
+#sripts:
+# - mvn clean install -Pfull -DskipTests
 #before_install: 'mvn -version'
 #install: 'mvn clean install -Pfull -DskipTests'
 
