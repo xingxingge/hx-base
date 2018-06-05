@@ -4,8 +4,10 @@ jdk:
 #branches:
 #  only:
 #    - master
+install:
+- ls
 sripts:
- - "mvn clean install -Pfull -DskipTests"
+ - mvn clean install -Pfull -DskipTests
 #before_install: 'mvn -version'
 #install: 'mvn clean install -Pfull -DskipTests'
 
