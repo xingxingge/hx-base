@@ -8,11 +8,6 @@
   <artifactId>hx-base</artifactId>
   <version>1.1-SNAPSHOT</version>
   <dependencies>
-    <!--<dependency>-->
-      <!--<groupId>com.topsec.tsm</groupId>-->
-      <!--<artifactId>datastructure</artifactId>-->
-      <!--<version>1.1-SNAPSHOT</version>-->
-    <!--</dependency>-->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
