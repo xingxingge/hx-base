@@ -12,6 +12,7 @@ public class Main {
         e.printStackTrace();
       }
       System.out.println(new Date());
+      System.out.println(new Date());
     }
   }
 }
